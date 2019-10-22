@@ -3,14 +3,15 @@ function split(arr) {
     return [ arr.slice(0, middle), arr.slice(middle) ]
 }
 
-function merge(one, two) {
+function merge(one, two, callback) {
+    console.log(callback)
     const finalArr = []
 
     while (one.length && two.length) {
-        if (one[0] < two[0]) {
-            finalArr.push(one.shift())
-        } else {
+        if (callback(one[0], two[0]) === 1) {
             finalArr.push(two.shift())
+        } else {
+            finalArr.push(one.shift())
         }
     }
 
@@ -23,14 +24,26 @@ function merge(one, two) {
     }
 }
 
-function mergeSort(array) {
+function mergeSort(array, callback) {
+
+    if (!callback) {
+        callback = function(a, b) {
+            if (a < b) return -1
+            if (a > b) return 1
+            return 0
+        }
+    }
+
+    // console.log(callback)
+
     if (array.length === 1) {
-        console.log(array)
         return array
     }
 
     const [ one, two ] = split(array)
+
     const sortedOne = mergeSort(one)
     const sortedTwo = mergeSort(two)
-    return merge(sortedOne, sortedTwo)
+
+    return merge(sortedOne, sortedTwo, callback)
 }

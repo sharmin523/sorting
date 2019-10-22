@@ -24,5 +24,5 @@ function bubbleSort(array, callback){
 function swap(array, index){
   const temp = array[index]
   array[index] = array[index+1]
-  array[index+1] = temp
+  array[index + 1] = temp
 }
