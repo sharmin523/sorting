@@ -1,0 +1,17 @@
+{
+  "name": "sorting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bubblesort.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "testem"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "testem": "^3.0.0"
+  }
+}
